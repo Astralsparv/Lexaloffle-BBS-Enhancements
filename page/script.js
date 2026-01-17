@@ -1,4 +1,4 @@
-const version="1.0";
+const version="1.1";
 const dataUrl=`https://raw.githubusercontent.com/Astralsparv/Lexaloffle-BBS-Enhancements/refs/heads/main/data.json?recache=${Math.random()}`;
 
 async function getJSON(url) {

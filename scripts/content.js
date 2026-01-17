@@ -172,9 +172,11 @@ function updBBSThread(thread,updblock){
   }
 }
 
+
+
 function update(delay,uid){
   let bbsthreads;
-  if (delay==null) {delay=1000};
+  if (delay==null) {delay=10};
   bbsthreads = document.getElementsByClassName('thread_preview');
   const comments = document.querySelectorAll("div[id^='p']:not(.thread_preview)");
   // find a non race-condition way
@@ -208,8 +210,6 @@ const toDataURL = url => fetch(url)
     reader.readAsDataURL(blob)
 }))
 
-update();
-
 const style=document.createElement('style');
 style.textContent=`
 /* bbs enhancements */
@@ -230,3 +230,19 @@ style.textContent=`
 `;
 
 document.head.appendChild(style);
+
+let observerTimeout = null;
+
+const observer = new MutationObserver(() => {
+  clearTimeout(observerTimeout);
+  observerTimeout = setTimeout(() => {
+    update(0);
+  }, 50);
+});
+
+observer.observe(document.body, {
+  childList: true,
+  subtree: true
+});
+
+update();

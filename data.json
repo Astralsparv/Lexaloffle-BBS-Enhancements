@@ -1,7 +1,7 @@
 {
-	"version": "1.0",
+	"version": "1.1",
 	"new":
 	[
-        "Blocking users - block in chat & threads, hides them"
+        "Blocking users - block in chat & threads, hides them\nFixes bugs with blocked users not being hidden when you change page"
 	]
 }
